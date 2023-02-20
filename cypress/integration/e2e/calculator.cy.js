@@ -1,6 +1,6 @@
 describe("Calculator", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3004");
+    cy.visit("http://localhost:3000");
   })
 
   it('should have working number buttons', () => {
@@ -83,7 +83,7 @@ it('can multiple operations be chained together', () => {
       cy.get('#operator-equals').click()
     })
 
-    it('should display inifinity when a number is divided by 0', () => {
+    it('should display Error when a number is divided by 0', () => {
       cy.get('#number9').click();
       cy.get('#operator-divide').click()
       cy.get('#number0').click();

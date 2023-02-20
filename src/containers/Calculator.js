@@ -6,19 +6,24 @@ function App() {
 
   const [previousTotal, setPreviousTotal] = useState(0); 
   const [runningTotal , setRunningTotal] = useState(0); 
-  const [previousOperator, setPreviousOperator] = useState(null); 
+  const [previousOperator, setPreviousOperator] = useState(null);
   const [newTotal, setNewTotal] = useState(true);
   const [calculatedTotal, setCalculatedTotal] = useState(0);
 
   const numberClick =  (number) => {
-
+    //number is whatever we got from button click
     let tempTotal = runningTotal;
+    //if running total is 0 or newTotal is truthy
     if ( runningTotal === 0 || newTotal){
+      //if calculatedTotal is truthy
       if(calculatedTotal){
+        //make previousTotal the calculatedTotal
         setPreviousTotal(calculatedTotal);
       } else {
+        //make previous total the runningTotal
         setPreviousTotal(runningTotal)
       }
+      //dump the tempTotal back to 0 and set newTotal back to False
       tempTotal = 0
       setNewTotal(false);
     }
@@ -46,7 +51,9 @@ function App() {
       if (previousTotal && previousOperator) {
         switch (previousOperator) {
           case "+":
-            add(runningTotal);
+            {
+            add(runningTotal);         
+            }
             break;
           case "-":
             subtract(runningTotal);
@@ -75,7 +82,10 @@ function App() {
   }
 
   const add = (number) => {
+    console.log(`Number: ${number}`)
+    console.log(`previousTotal: ${previousTotal}`)
     let calculatedNumber = parseFloat(previousTotal) + parseFloat(number);
+    console.log(`CalculatedNumber: ${calculatedNumber}`)
     setRunningTotal(calculatedNumber);
     setCalculatedTotal(calculatedNumber);
   }
